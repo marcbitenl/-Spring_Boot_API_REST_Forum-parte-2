@@ -1,13 +1,12 @@
 package br.com.alura.forum.controller;
 
 import java.net.URI;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,9 +34,10 @@ public class TopicosController {
 
 	@GetMapping
 	public Page<TopicoDto> lista(@RequestParam(required = false) String nomeCurso,
-			@RequestParam int pagina, @RequestParam	 int qtd, @RequestParam String ordenacao) {
+			@PageableDefault(sort = "id", direction = Direction.DESC) Pageable paginacao) {
+
 		
-		Pageable paginacao = PageRequest.of(pagina, qtd, Direction.ASC, ordenacao );
+		
 		
 		if (nomeCurso == null) {
 			Page<Topico> topicos = topicoRepository.findAll(paginacao);
