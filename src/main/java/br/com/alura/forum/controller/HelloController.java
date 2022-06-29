@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 	
-	@RequestMapping("/") //diz qual é a url
-	@ResponseBody //para não considerar que é uma página ai responde direto peli navegador
+	@RequestMapping("/")
+	@ResponseBody
 	public String hello() {
 		return "Hello World!";
 	}
-	
 
 }

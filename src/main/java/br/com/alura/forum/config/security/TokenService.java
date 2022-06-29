@@ -12,26 +12,25 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Service
 public class TokenService {
-
-	@Value("${forum.jwt.expiration}") // injetar parametros que estão no apllication.properties
+	
+	@Value("${forum.jwt.expiration}")
 	private String expiration;
-
-	@Value("${forum.jwt.secret}") // injetar parametros que estão no apllication.properties
+	
+	@Value("${forum.jwt.secret}")
 	private String secret;
 
 	public String gerarToken(Authentication authentication) {
-
-		Usuario logado = (Usuario) authentication.getPrincipal(); // metodo que recupera usuario que está logado
+		Usuario logado = (Usuario) authentication.getPrincipal();
 		Date hoje = new Date();
-		@SuppressWarnings("deprecation")
 		Date dataExpiracao = new Date(hoje.getTime() + Long.parseLong(expiration));
-		return Jwts.builder() // metodo que seta informações para construir o token
-				.setIssuer("API dp forum da Alura")// identificação de quem fez a geração desse token
-				.setSubject(logado.getId().toString()) // usuario autenticado a quem eses token pertence
-				.setIssuedAt(hoje) // data de geração do token
-				.setExpiration(dataExpiracao) // data de expiração do token
-				.signWith(SignatureAlgorithm.HS256, secret).compact();
-
+		
+		return Jwts.builder()
+				.setIssuer("API do Fórum da Alura")
+				.setSubject(logado.getId().toString())
+				.setIssuedAt(hoje)
+				.setExpiration(dataExpiracao)
+				.signWith(SignatureAlgorithm.HS256, secret)
+				.compact();
 	}
 
 }

@@ -1,12 +1,16 @@
 package br.com.alura.forum.controller.form;
 
+import org.springframework.lang.NonNull;
+
 import br.com.alura.forum.modelo.Topico;
 import br.com.alura.forum.repository.TopicoRepository;
 
 public class AtualizacaoTopicoForm {
 	
+	@NonNull  
 	private String titulo;
 	
+	@NonNull  
 	private String mensagem;
 
 	public void setTitulo(String titulo) {
