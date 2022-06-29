@@ -4,7 +4,7 @@ import br.com.alura.forum.modelo.Curso;
 import br.com.alura.forum.modelo.Topico;
 import br.com.alura.forum.repository.CursoRepository;
 
-public class Topicoform {
+public class TopicoForm {
 
 	private String titulo;
 	private String mensagem;
