@@ -12,4 +12,4 @@
 
 # Certificado
 
------------------------
+https://cursos.alura.com.br/certificate/23c069d5-17ee-4396-a973-b24fa37ac237
